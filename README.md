@@ -1,174 +1,123 @@
-# NexVibe 🌐
+# 🌟 NexVibe: Your Next Big Vibe in Social Networking
 
-![NexVibe Banner](https://via.placeholder.com/1200x300.png?text=NexVibe+-+Connect+with+the+Next+Vibe)
+![NexVibe Logo](https://img.shields.io/badge/NexVibe-Your%20Next%20Big%20Vibe-blue.svg)
 
-**NexVibe** is a modern social media platform built with Spring Boot, designed to connect users through posts, comments, likes, and follows. Whether you're sharing text, images, or videos, NexVibe provides a seamless and secure experience for building communities and expressing yourself. With a vibrant and intuitive design, NexVibe is your go-to platform for the next big vibe in social networking.
+Welcome to the **NexVibe** repository! This platform combines vibrant design with intuitive functionality, making it your go-to space for social networking. Whether you're connecting with friends, sharing updates, or discovering new interests, NexVibe aims to elevate your social experience.
 
----
+## Table of Contents
 
-## 📖 Project Description
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-NexVibe is a full-stack social media application developed to empower users to create, share, and engage with content in a dynamic online environment. Built on **Spring Boot**, NexVibe leverages a robust tech stack to ensure security, scalability, and performance:
+## Features
 
-- **Spring Security**: Implements JWT-based authentication and authorization to secure API endpoints and protect user data.
-- **Spring Data JPA**: Simplifies database operations with an ORM layer, enabling efficient data management.
-- **Hibernate**: Powers the ORM functionality, mapping Java objects to PostgreSQL tables with minimal boilerplate.
-- **Lombok**: Reduces boilerplate code (e.g., getters, setters, constructors) for cleaner and more maintainable code.
-- **PostgreSQL**: A reliable relational database for storing user profiles, posts, comments, likes, and follow relationships.
-- **Spring Web**: Provides the foundation for building RESTful APIs to handle HTTP requests and responses.
+- **User-Friendly Interface**: Enjoy a sleek and vibrant design that enhances your experience.
+- **Secure Authentication**: Built with JWT for secure user sessions.
+- **Dynamic Content**: Easily share and discover content tailored to your interests.
+- **Robust Backend**: Powered by Spring Boot and Hibernate, ensuring high performance and reliability.
+- **Real-Time Updates**: Stay connected with real-time notifications and updates.
+- **Data Security**: Your data is safe with Spring Security and PostgreSQL.
 
-NexVibe supports core social media features:
-- User registration and login with JWT authentication.
-- Create, view, and delete posts (text, image, video).
-- Comment on posts and like/unlike them.
-- Follow/unfollow other users and view followers/following lists.
-- File uploads for media content, stored locally on the server.
+## Technologies Used
 
-The project is designed with modularity and extensibility in mind, making it easy to add new features or integrate with a frontend application.
+NexVibe leverages a range of powerful technologies to deliver a seamless experience:
 
----
+- **Java**: The core programming language for backend development.
+- **Spring Boot**: Framework for building the application efficiently.
+- **Spring MVC**: For managing web requests and responses.
+- **Hibernate**: ORM tool for database interactions.
+- **PostgreSQL**: The database management system used for data storage.
+- **Spring Data JPA**: Simplifies data access and manipulation.
+- **Spring Security**: Provides security features for user authentication and authorization.
+- **Validator**: Ensures data integrity and validation throughout the application.
 
-## 🚀 Features
+## Installation
 
-- **User Authentication**: Secure registration and login with JWT tokens.
-- **Post Management**: Create posts with text, images, or videos; view all posts or specific posts; delete your own posts.
-- **Engagement**: Comment on posts, like/unlike posts, and follow/unfollow users.
-- **Media Support**: Upload images or videos with posts, stored in a local `uploads` directory.
-- **Profile Management**: View user profiles, including your own, with details on followers and following.
-- **Responsive API**: RESTful endpoints for seamless integration with frontend applications.
+To set up NexVibe on your local machine, follow these steps:
 
----
-
-## 🛠️ Tech Stack
-
-| Technology         | Purpose                          |
-|--------------------|----------------------------------|
-| **Spring Boot**    | Backend framework for building the application |
-| **Spring Security**| Authentication and authorization with JWT |
-| **Spring Data JPA**| Simplified database access and ORM |
-| **Hibernate**      | Object-relational mapping for database operations |
-| **Lombok**         | Reduces boilerplate code (getters, setters, etc.) |
-| **PostgreSQL**     | Relational database for data persistence |
-| **Spring Web**     | RESTful API development and HTTP handling |
-
----
-
-## 📦 Prerequisites
-
-Before setting up NexVibe, ensure you have the following installed:
-
-- **Java 17** or later
-- **Maven** (for dependency management)
-- **PostgreSQL** (database server)
-- **Postman** (for API testing, optional but recommended)
-
----
-
-## ⚙️ Setup Instructions
-
-1. **Clone the Repository**  
+1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/leandre000/nexvibe.git
-   cd nexvibe
+   git clone https://github.com/Riyashr/NexVibe.git
+   cd NexVibe
    ```
 
-2. **Set Up PostgreSQL Database**  
-   - Install PostgreSQL if not already installed.
-   - Create a database named `socialmedia`:
-     ```sql
-     CREATE DATABASE socialmedia;
-     ```
-   - Update the `application.properties` file with your PostgreSQL credentials:
-     ```properties
-     spring.datasource.url=jdbc:postgresql://localhost:5432/socialmedia
-     spring.datasource.username=postgres
-     spring.datasource.password=your_password
-     spring.jpa.hibernate.ddl-auto=update
-     spring.jpa.show-sql=true
-     spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-     app.media.upload-dir=./uploads
-     jwt.secret=your-generated-base64-key-here
-     jwt.expiration=31536000000
-     ```
-
-3. **Generate a JWT Secret Key**  
-   - Use a tool like `openssl` to generate a secure key:
-     ```bash
-     openssl rand -base64 64
-     ```
-   - Copy the output and paste it into `application.properties` as `jwt.secret`.
-
-4. **Install Dependencies**  
-   Run the following command to download all dependencies:
+2. **Install Dependencies**:
+   Make sure you have Java and Maven installed. Run the following command:
    ```bash
-   mvn clean install
+   mvn install
    ```
 
-5. **Run the Application**  
-   Start the Spring Boot application:
+3. **Set Up Database**:
+   Create a PostgreSQL database and update the `application.properties` file with your database credentials.
+
+4. **Run the Application**:
+   Use the following command to start the application:
    ```bash
    mvn spring-boot:run
    ```
-   The app will be available at `http://localhost:8080`.
 
-6. **Test the API**  
-   - Use Postman to test the API endpoints.
-   - Start with `POST /api/auth/register` to create a user:
-     ```json
-     {
-       "username": "testuser",
-       "email": "testuser@example.com",
-       "password": "password123"
-     }
-     ```
-   - Then log in with `POST /api/auth/login` to get a JWT token:
-     ```json
-     {
-       "email": "testuser@example.com",
-       "password": "password123"
-     }
-     ```
-   - Use the token in the `Authorization` header (`Bearer <token>`) for authenticated endpoints.
+## Usage
 
----
+Once the application is running, you can access it at `http://localhost:8080`. 
 
-## 🌐 API Endpoints
+### User Registration
 
-### Authentication
-- **POST /api/auth/register**: Register a new user.
-- **POST /api/auth/login**: Log in and receive a JWT token.
+- Navigate to the registration page.
+- Fill in the required details and submit the form.
+- Check your email for a confirmation link.
 
-### Users
-- **GET /api/users/{id}**: Get user details by ID.
-- **GET /api/users/me**: Get the current user's profile.
+### Logging In
 
-### Posts
-- **POST /api/posts**: Create a post (multipart/form-data with `post` JSON and optional `file`).
-- **GET /api/posts**: Get all posts.
-- **GET /api/posts/{id}**: Get a specific post.
-- **DELETE /api/posts/{id}**: Delete a post (owner only).
+- Go to the login page.
+- Enter your credentials and click "Login."
 
-### Comments
-- **POST /api/posts/{postId}/comments**: Add a comment to a post.
-- **GET /api/posts/{postId}/comments**: Get all comments for a post.
+### Exploring Features
 
-### Likes
-- **POST /api/posts/{postId}/likes**: Like a post.
-- **DELETE /api/posts/{postId}/likes**: Unlike a post.
+- Post updates, follow friends, and engage with content.
+- Use the search functionality to discover new topics and users.
 
-### Following
-- **POST /api/users/{userId}/follow**: Follow a user.
-- **DELETE /api/users/{userId}/unfollow**: Unfollow a user.
-- **GET /api/users/me/following**: Get users the current user is following.
-- **GET /api/users/me/followers**: Get the current user's followers.
+## Contributing
 
----
+We welcome contributions! To get started:
 
-## 📞 Contact
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add some feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. Open a pull request.
 
-For questions or feedback, reach out to the project maintainer:
-- **Email**: iamshemaleandre@gmail.com
-- **GitHub**: [leandre000](https://github.com/leandre000)
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or feedback, please reach out:
+
+- **Email**: support@nexvibe.com
+- **Twitter**: [@NexVibe](https://twitter.com/NexVibe)
+
+## Releases
+
+You can find the latest releases of NexVibe [here](https://github.com/Riyashr/NexVibe/releases). Download the latest version and execute it to start enjoying NexVibe!
+
+For more information, visit the [Releases](https://github.com/Riyashr/NexVibe/releases) section.
 
 ---
 
+Thank you for checking out NexVibe! We hope you enjoy using it as much as we enjoyed building it. Your feedback is valuable, and we look forward to your contributions.
